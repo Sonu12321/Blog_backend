@@ -28,16 +28,16 @@ try {
 }
 }
 export const signin = async (req, res, next) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!username || !password) {
+    if (!email || !password) {
         return next(errorcode(400, 'All fields are required'));
     }
 
     try {
-        const validUser = await User.findOne({ username });
+        const validUser = await User.findOne({ email });
         if (!validUser) {
-            return next(errorcode(400, 'Wrong username'));
+            return next(errorcode(400, 'Wrong email'));
         }
 
         const validPassword = bcryptjs.compareSync(password, validUser.password);
