@@ -20,10 +20,11 @@ export const updateUser=async (req,res,next)=>{
             {
             return next(errorcode(400,'username must be between 7 and 20 characters'))
         }
-        }
+        
     if(req.body.username.includes(' ')){
         return next(errorcode(400,'accha se likh'))
     }
+  }
     try {
         const updateUser =await User.findByIdAndUpdate(
             req.params.userId,
@@ -31,7 +32,8 @@ export const updateUser=async (req,res,next)=>{
             $set:{
                 username:req.body.username,
                 email:req.body.email,
-                password:req.body.password
+                password:req.body.password,
+                profilePicture:req.body.profilePicture
             },
         }, {new :true})
         const {password,...rest} = updateUser._doc
