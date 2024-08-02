@@ -37,7 +37,7 @@ export const signin = async (req, res, next) => {
     try {
         const validUser = await User.findOne({ email });
         if (!validUser) {
-            return next(errorcode(400, 'Wrong email'));
+            return next(errorcode(400, false,'Wrong email'));
         }
 
         const validPassword = bcryptjs.compareSync(password, validUser.password);
@@ -57,7 +57,9 @@ export const signin = async (req, res, next) => {
         });
 
     } catch (error) {
-        next(error);
+        res.status(400).json({
+          
+        })
     }
 };
 

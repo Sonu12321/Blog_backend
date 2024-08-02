@@ -31,7 +31,7 @@ app.use((err,req,res,next)=>{
     const message = err.message || 'invalid syntax'
 
     res.status(statusCode).json({
-        success:true,
+        success:false,
         statusCode,
         message
     })
