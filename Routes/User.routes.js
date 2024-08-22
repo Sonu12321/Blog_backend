@@ -8,6 +8,6 @@ router.get('/test',test)
 router.put('/updates/:userId',verifyToken,updateUser)
 router.delete('/delete/:userId',verifyToken,deleteUser)
 router.post('/Signout',signout)
-router.get('/getUsers',verifyToken,getUsers)
+router.get('/getusers',verifyToken,getUsers)
 
 export default router
