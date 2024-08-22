@@ -5,7 +5,8 @@ import Useroutes from './Routes/User.routes.js'
 import Authroute from './Routes/Auth.route.js'
 import postRoutes from './Routes/Post.route.js'
 import cookieParser from 'cookie-parser'
-
+// import Comments from './Routes/Comments.route.js'
+import commentRoutes from './Routes/Comments.route.js';
 
 const app = express()
 
@@ -23,6 +24,7 @@ mongoose.connect(`${process.env.DATABASE}`).then(() => { console.log("Connected 
 app.use('/api/user',Useroutes)
 app.use('/api/auth',Authroute)
 app.use('/api/post',postRoutes)
+app.use('/api/comment', commentRoutes);
 
 
 
