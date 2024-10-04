@@ -10,19 +10,19 @@ export const updateUser=async (req,res,next)=>{
         return next(errorcode(400,'you are not allowed '))
     }
     if (req.body.password) {
-        if (req.body.password.length < 6) {
-          return next(errorHandler(400, 'Password must be at least 6 characters'));
+        if (req.body.password.length < 3) {
+          return next(errorHandler(400, 'Password must be at least 3 characters'));
         }
         req.body.password = bcryptjs.hashSync(req.body.password, 10);
       } 
     if(req.body.username){
-        if(req.body.username.length < 7 || req.body.username.length > 20)
+        if(req.body.username.length < 4 || req.body.username.length > 20)
             {
-            return next(errorcode(400,'username must be between 7 and 20 characters'))
+            return next(errorcode(400,'username must be between 4 and 20 characters'))
         }
         
     if(req.body.username.includes(' ')){
-        return next(errorcode(400,'accha se likh'))
+        return next(errorcode(400,'acche se likh'))
     }
   }
     try {
